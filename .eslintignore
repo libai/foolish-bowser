@@ -1,0 +1,9 @@
+**/node_modules
+**/jspm_packages
+**/bower_compoments
+
+# config.js
+app/config.js
+
+# vendor
+app/vendor/**

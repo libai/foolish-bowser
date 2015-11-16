@@ -1,0 +1,5 @@
+{
+  "optional": ["es7.decorators"],
+  "plugins": ["angular2-annotations"],
+  "ignore": ["**/node_modules", "**/jspm_packages", "**/bower_compoments", "app/config.js", "app/vendor/**"]
+}
