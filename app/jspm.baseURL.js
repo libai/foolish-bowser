@@ -1,3 +1,3 @@
 System.config({
-  baseURL: `${__dirname}/`,
+  baseURL: `file:///${__dirname}/`,
 });
