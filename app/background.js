@@ -4,8 +4,9 @@
 // It doesn't have any windows which you can see on screen, but we can open
 // window from here.
 
-const app = require('app');
-const BrowserWindow = require('browser-window');
+// No unit test and no transpile here, so require directly
+const app = require('electron').app;
+const BrowserWindow = require('electron').BrowserWindow;
 const env = require('./vendor/electron_boilerplate/env_config');
 const devHelper = require('./vendor/electron_boilerplate/dev_helper');
 const windowStateKeeper = require('./vendor/electron_boilerplate/window_state');
@@ -31,8 +32,8 @@ app.on('ready', () => {
   }
 
   // TODO add e2e test
-  // mainWindow.loadUrl(`file://${__dirname}/spec.html`);
-  mainWindow.loadUrl(`file://${__dirname}/app.html`);
+  // mainWindow.loadURL(`file://${__dirname}/spec.html`);
+  mainWindow.loadURL(`file://${__dirname}/app.html`);
 
   if (env.name !== 'production') {
     devHelper.setDevMenu();
