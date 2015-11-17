@@ -3,6 +3,8 @@ import gulp from 'gulp';
 import jetpack from 'fs-jetpack';
 import childProcess from 'child_process';
 import del from 'del';
+import tape from 'gulp-tape';
+import tapColorize from 'tap-colorize';
 
 let $ = require('gulp-load-plugins')({
   lazy: true,
@@ -98,22 +100,16 @@ var copyTapeTask = function() {
   });
 };
 
-gulp.task('tape-copy', () => copyTapeTask());
-
-var oneTapeProcess = function(tapePath) {
-  console.log(tapePath);
-  childProcess.execSync(`../node_modules/.bin/babel-node ${tapePath} | ../node_modules/.bin/faucet`, {
-    cwd: `${__dirname}/../build`,
-    env: process.env,
-    stdio: 'inherit',
-  });
-}
-
-gulp.task('tape', ['build'], () => {
+var runTapeTask = function() {
   return copyTapeTask().then((tapePaths) => {
-    return new Promise((resolve) => {
-      tapePaths.map((tapePath) => oneTapeProcess(tapePath));
-      resolve();
-    });
+    return gulp.src(tapePaths, {
+      cwd: destDir.path(),
+    }).pipe(tape({
+      reporter: tapColorize(),
+    }));
   });
-});
+};
+
+gulp.task('tape-copy', copyTapeTask);
+gulp.task('tape-only', runTapeTask);
+gulp.task('tape', ['build'], runTapeTask);

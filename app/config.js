@@ -1,5 +1,4 @@
 System.config({
-  baseURL: `${__dirname}/`,
   defaultJSExtensions: true,
   transpiler: "none",
   paths: {

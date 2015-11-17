@@ -2,8 +2,8 @@ fork from electron-boilerplate
 ==============
 ```
 npm i
-jspm install
-// change baseURL to `${__dirname}/` in app/config.js
+npm i -g gulp
+npm run jspm install
 gulp tape
 npm start
 ```

@@ -1,5 +1,6 @@
 import './jspm_packages/system-polyfills.src.js';
 import System from './jspm_packages/system.src.js';
+import './jspm.baseURL.js';
 import './config.js';
 import test from '../node_modules/tape';
 
